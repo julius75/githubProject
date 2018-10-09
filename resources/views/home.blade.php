@@ -5,14 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">Welcome {{Auth::user()->name}}</div>
+                <div class="card-header text-center">Welcome {{Auth::user()->name}} <countrepo></countrepo>
+                    <listrepo></listrepo>
+                </div>
 
                 <div class="card-body">
-                <github></github>
-                    {{--<gitrepo></gitrepo>--}}
-                    <repositories>
-
-                    </repositories>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -21,6 +18,7 @@
                     @endif
 
                     You are logged in!
+                        <i class="fas fa-stroopwafel"></i>
                 </div>
             </div>
         </div>

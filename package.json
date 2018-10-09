@@ -20,8 +20,9 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.3.1",
+        "@fortawesome/fontawesome-free": "^5.4.0",
         "vue-github-api": "^0.1.7",
-        "vue-resource": "^1.5.1"
+        "vue-resource": "^1.5.1",
+        "vue-router": "^3.0.1"
     }
 }

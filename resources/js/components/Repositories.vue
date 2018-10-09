@@ -9,10 +9,6 @@
 
                     </div>
 
-                    <!--<div class="card-body">-->
-                    <!--List Of your Repos:-->
-
-                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -29,7 +25,7 @@
         },
         mounted:function () {
             this.GitHubAPI.get('/repos/julius75/oneLove/contents', {}, (response)=>{
-                 this.myGitHubData=response.body
+                this.myGitHubData=response.body
                 console.log(response.body)
             })
 

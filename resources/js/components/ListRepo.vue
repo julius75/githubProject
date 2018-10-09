@@ -3,12 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header"><p>Repositories grabbed: {{ repositoriesCount }}</p></div>
+                    <div class="card-header"> <ul v-for="repo in myGitHubData">
+                        {{ repo.name}}
+                        </ul></div>
 
-                    <!--<div class="card-body">-->
-                    <!--List Of your Repos:-->
-
-                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -23,19 +21,13 @@
             }
         },
         mounted:function () {
-            this.GitHubAPI.get('/user/repos', {}, [this.myGitHubData, 'repositories'])
-                .then(function (data) {
-                    console.log(data)
-                })
-        },
-        computed:{
-            repositoriesCount: function () {
-                if (this.myGitHubData.repositories) {
-                    return this.myGitHubData.repositories.length
-                }
-                return 'none yet...'
-            }
+            this.GitHubAPI.get('/user/repos', {}, (response)=>{
+               this.myGitHubData= response.body
+                console.log(response.body)
+            } )
+
         }
+
 
     }
 </script>

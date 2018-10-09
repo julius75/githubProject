@@ -8,9 +8,15 @@ import VueResource from 'vue-resource'
 import GitHubAPI from 'vue-github-api'
 require('./bootstrap');
 
+
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
 window.Vue = require('vue');
 Vue.use(VueResource);
-Vue.use(GitHubAPI,{token:'3aff1211f71224be2755b9a140eb5769d3a55768'});
+Vue.use(GitHubAPI,{token:'3c776d79fa79fe108b88f0d636425bbb6ed21230'});
 
 
 
@@ -21,10 +27,22 @@ Vue.use(GitHubAPI,{token:'3aff1211f71224be2755b9a140eb5769d3a55768'});
  */
 
 Vue.component('github', require('./components/Github.vue'));
-Vue.component('gitrepo', require('./components/ListRepo.vue'));
+Vue.component('listrepo', require('./components/ListRepo.vue'));
 Vue.component('repositories', require('./components/Repositories.vue'));
+Vue.component('vuelinks', require('./components/Vuelinks.vue'));
+Vue.component('countrepo', require('./components/CountRepo.vue'));
 
+//create routes
+// const routes = [
+//     { path: '/repository', component: Repositories },
+//     { path: '/branch', component: ListRepo }
+// ]
+//
+// const router = new VueRouter({
+//     routes // short for `routes: routes`
+// })
 
 const app = new Vue({
     el: '#app'
+
 });
