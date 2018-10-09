@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header"> <ul v-for="repo in myGitHubData">
+                    <div class="card-header"> <ul v-for="repo in myGitHubData" v-on:click="openRepo()">
                         {{ repo.name}}
                         </ul></div>
 
@@ -15,6 +15,7 @@
 
 <script>
     export default {
+        props:['repo'],
         data () {
             return {
                 myGitHubData: {}
@@ -25,7 +26,11 @@
                this.myGitHubData= response.body
                 console.log(response.body)
             } )
-
+        },
+        methods:{
+            openRepo:function () {
+                
+            }
         }
 
 

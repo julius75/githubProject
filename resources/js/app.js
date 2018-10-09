@@ -16,7 +16,7 @@ Vue.use(VueRouter)
 
 window.Vue = require('vue');
 Vue.use(VueResource);
-Vue.use(GitHubAPI,{token:'3c776d79fa79fe108b88f0d636425bbb6ed21230'});
+Vue.use(GitHubAPI,{token:'06604a2e14703b815a0b9be89ead4ee55a501a50'});
 
 
 
@@ -31,6 +31,7 @@ Vue.component('listrepo', require('./components/ListRepo.vue'));
 Vue.component('repositories', require('./components/Repositories.vue'));
 Vue.component('vuelinks', require('./components/Vuelinks.vue'));
 Vue.component('countrepo', require('./components/CountRepo.vue'));
+Vue.component('newrepo', require('./components/NewRepo.vue'));
 
 //create routes
 // const routes = [

@@ -1,16 +1,7 @@
 <template>
     <div class="col-md-4">
-        <div class="card text-white border-0">
-            <div class="card-header bg-info">
-                You have Repositories:{{ repositoriesCount }}
+        There are Repositories:{{ repositoriesCount }}
             </div>
-
-
-            <div class="card-body bg-info">
-
-            </div>
-        </div>
-    </div>
 </template>
 
 <script>
