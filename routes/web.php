@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/contents/{repo}','ComponentsController@contents');
-Route::get('/new_repo','GithubController@index');
+Route::get('/new','GithubController@index');
 Route::get('/commits_made/{repo}','ComponentsController@commits_made');
 Route::get('/edit/{repo}','ComponentsController@edit');
 

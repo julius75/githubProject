@@ -4,12 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-                <div> <countrepo></countrepo>
-
-                </div>
 
                 <div class="well-sm">
-                    {{--<newrepo></newrepo>--}}
+                    <p class="text-center"><a href='{{route("/new")}}' class="btn btn-primary">
+                            Add New Repository</a></p>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -20,7 +18,6 @@
                     You are logged in!
                 </div>
             <div>
-                <editrepo></editrepo>
             </div>
         </div>
     </div>
