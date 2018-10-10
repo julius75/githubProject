@@ -51881,7 +51881,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             myGitHubData: {},
-            url: '/repos/julius75/oneLove/contents'
+            url: '/repos/' + this.user + '/' + this.repo + '/contents'
         };
     },
 
@@ -51890,14 +51890,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        this.GitHubAPI.get('/repos/\'+this.user+\'/\'+this.repo+\'/contents', {}, function (response) {
+        this.GitHubAPI.get('/repos/' + this.user + '/' + this.repo + '/contents', {}, function (response) {
             _this.myGitHubData = response.body;
             console.log(response.body);
         });
     },
-    computed: {
-        openDir: function openDir() {}
-    }
+    methods: {
+        openDir: function openDir($repo) {
+            this.myGitHubData = {};
+            this.url = this.url + '/' + $repo;
+            this.GitHubAPI.get(this.url, {}, [this.myGitHubData, 'repositories']);
+        } }
 
 });
 

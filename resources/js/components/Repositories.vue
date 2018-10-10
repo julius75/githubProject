@@ -20,23 +20,25 @@
         data () {
             return {
                 myGitHubData: {},
-                url: '/repos/julius75/oneLove/contents'
+                url: '/repos/'+this.user+'/'+this.repo+'/contents'
             }
         },
         props:['user','repo'],
 
         mounted:function () {
-            this.GitHubAPI.get('/repos/\'+this.user+\'/\'+this.repo+\'/contents', {}, (response)=>{
+            this.GitHubAPI.get('/repos/'+this.user+'/'+this.repo+'/contents', {}, (response)=>{
                 this.myGitHubData=response.body
                 console.log(response.body)
             })
 
         },
-        computed:{
-            openDir:function () {
+        methods:{
+            openDir:function ($repo) {
+                    this.myGitHubData={}
+                    this.url=this.url+'/'+$repo;
+                    this.GitHubAPI.get(this.url, {}, [this.myGitHubData, 'repositories'])
 
-            }
-        }
+        }}
 
     }
 </script>
