@@ -53,7 +53,8 @@
                 })
 
 
-            }
+            },
+            props: ['username'],
         }
     }
 </script>

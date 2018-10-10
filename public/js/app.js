@@ -24954,7 +24954,7 @@ module.exports = Vue;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(62);
+module.exports = __webpack_require__(65);
 
 
 /***/ }),
@@ -24986,7 +24986,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_
 
 window.Vue = __webpack_require__(12);
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_0_vue_resource__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_github_api___default.a, { token: '06604a2e14703b815a0b9be89ead4ee55a501a50' });
+__WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_github_api___default.a, { token: 'd1a69b85dd4bf363abc2703802b0c5a023b55b59' });
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -25000,6 +25000,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('repositories', __webpack_
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('vuelinks', __webpack_require__(53));
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('countrepo', __webpack_require__(56));
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('newrepo', __webpack_require__(59));
+__WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('editrepo', __webpack_require__(62));
 
 //create routes
 // const routes = [
@@ -51884,10 +51885,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    props: ['user', 'repo'],
+
     mounted: function mounted() {
         var _this = this;
 
-        this.GitHubAPI.get('/repos/julius75/oneLove/contents', {}, function (response) {
+        this.GitHubAPI.get('/repos/\'+this.user+\'/\'+this.repo+\'/contents', {}, function (response) {
             _this.myGitHubData = response.body;
             console.log(response.body);
         });
@@ -52275,7 +52278,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.GitHubAPI.post('/user/repos', repodetails, function (response) {
                 window.location.href = "http://127.0.0.1:8000/home";
             });
-        }
+        },
+        props: ['username']
     }
 });
 
@@ -52367,6 +52371,196 @@ if (false) {
 
 /***/ }),
 /* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/EditRepo.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-cfd4dff2", Component.options)
+  } else {
+    hotAPI.reload("data-v-cfd4dff2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {},
+
+    props: ['repo', 'user'],
+
+    data: function data() {
+        return {
+            name: '',
+            myGitHubData: {}
+
+        };
+    },
+
+    methods: {
+        //update a repository
+        editRepo: function editRepo() {
+            console.log('here');
+            var repodetails = {
+                "name": this.name,
+                "homepage": "https://github.com",
+                "public": true,
+                "has_issues": true,
+                "has_projects": true,
+                "has_wiki": true
+            };
+            this.GitHubAPI.post('/repos/' + this.user + '/' + this.repo, repodetails, function (response) {
+                window.location.href = "http://127.0.0.1:8000/home";
+            });
+        }
+    }
+
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._v("\n    Repository  " + _vm._s(this.repo) + "\n        "),
+    _c("h4", [_vm._v("Edit Repository")]),
+    _vm._v(" "),
+    _c("form", [
+      _c("div", { staticClass: "form-group", attrs: { method: "post" } }, [
+        _c("label", { attrs: { for: "repo" } }, [_vm._v("Repo Name")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.name,
+              expression: "name"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", id: "repo", placeholder: "Enter name" },
+          domProps: { value: _vm.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.name = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { type: "submit" },
+          on: {
+            click: function($event) {
+              _vm.editRepo()
+            }
+          }
+        },
+        [_vm._v("Submit")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-check" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: { type: "checkbox", value: "", checked: "" }
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "form-check-label" }, [
+        _vm._v("\n            Public\n        ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-cfd4dff2", module.exports)
+  }
+}
+
+/***/ }),
+/* 65 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

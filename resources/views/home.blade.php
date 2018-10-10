@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="well-sm">
-                    <newrepo></newrepo>
+                    {{--<newrepo></newrepo>--}}
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -19,6 +19,9 @@
 
                     You are logged in!
                 </div>
+            <div>
+                <editrepo></editrepo>
+            </div>
         </div>
     </div>
 </div>

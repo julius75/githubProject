@@ -23,8 +23,10 @@
                 url: '/repos/julius75/oneLove/contents'
             }
         },
+        props:['user','repo'],
+
         mounted:function () {
-            this.GitHubAPI.get('/repos/julius75/oneLove/contents', {}, (response)=>{
+            this.GitHubAPI.get('/repos/\'+this.user+\'/\'+this.repo+\'/contents', {}, (response)=>{
                 this.myGitHubData=response.body
                 console.log(response.body)
             })
